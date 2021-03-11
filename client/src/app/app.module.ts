@@ -13,6 +13,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { from } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { JWTInterceptor } from './core/interceptors/jwt.interceptors';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CommonModule } from '@angular/common';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true},
-    {provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true},
+    {provide: HTTP_INTERCEPTORS, useClass:JWTInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })
